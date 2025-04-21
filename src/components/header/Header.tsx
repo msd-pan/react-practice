@@ -3,11 +3,11 @@ import "./header.css";
 
 const reactDescriptions = ["Fundamental", "Crucial", "Core"];
 
-function genRandomInt(max: number) {
+const genRandomInt = (max: number) => {
   return Math.floor(Math.random() * (max + 1));
-}
+};
 
-export default function Header() {
+const Header = () => {
   const description = reactDescriptions[genRandomInt(2)];
 
   return (
@@ -20,4 +20,6 @@ export default function Header() {
       </p>
     </header>
   );
-}
+};
+
+export default Header;

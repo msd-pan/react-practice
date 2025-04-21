@@ -4,11 +4,7 @@ interface CoreConceptProps {
   description: string;
 }
 
-export default function CoreConcept({
-  image,
-  title,
-  description,
-}: CoreConceptProps) {
+const CoreConcept = ({ image, title, description }: CoreConceptProps) => {
   return (
     <li>
       <img src={image} alt="..." />
@@ -16,4 +12,5 @@ export default function CoreConcept({
       <p>{description}</p>
     </li>
   );
-}
+};
+export default CoreConcept;
