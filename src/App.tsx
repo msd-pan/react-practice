@@ -7,13 +7,26 @@ import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 
 const App = () => {
-  type SelectedButton = "components" | "jsx" | "props" | "state";
-  const [selectedTopic, setSelectedTopic] =
-    useState<SelectedButton>("components");
+  // type SelectedButton = "components" | "jsx" | "props" | "state";
+  type SelectedButton = keyof typeof EXAMPLES;
+  const [selectedTopic, setSelectedTopic] = useState<SelectedButton>();
 
   const handleSelect = (selectedButton: SelectedButton) => {
     setSelectedTopic(selectedButton);
   };
+
+  let tabContent = <p>Please select a topic.</p>;
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -42,13 +55,7 @@ const App = () => {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {tabContent}
         </section>
       </main>
     </div>
