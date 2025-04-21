@@ -1,15 +1,12 @@
 type TabButtonProps = {
   children: React.ReactNode;
+  onSelect: () => void;
 };
 
-const TabButton = ({ children }: TabButtonProps) => {
-  const handleClick = () => {
-    console.log("hello world");
-  };
-
+const TabButton = ({ children, onSelect }: TabButtonProps) => {
   return (
     <li>
-      <button onClick={handleClick}>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
   );
 };

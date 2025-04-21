@@ -5,6 +5,10 @@ import CoreConcept from "./components/CoreConcept";
 import TabButton from "./components/TabButton";
 
 const App = () => {
+  const handleSelect = () => {
+    console.log("hello world");
+  };
+
   return (
     <div>
       <Header />
@@ -25,10 +29,10 @@ const App = () => {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={handleSelect}>Components</TabButton>
+            <TabButton onSelect={handleSelect}>JSX</TabButton>
+            <TabButton onSelect={handleSelect}>Props</TabButton>
+            <TabButton onSelect={handleSelect}>State</TabButton>
           </menu>
         </section>
       </main>
