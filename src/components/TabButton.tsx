@@ -1,12 +1,15 @@
 type TabButtonProps = {
   children: React.ReactNode;
   onSelect: () => void;
+  isSelected: boolean;
 };
 
-const TabButton = ({ children, onSelect }: TabButtonProps) => {
+const TabButton = ({ children, onSelect, isSelected }: TabButtonProps) => {
   return (
     <li>
-      <button onClick={onSelect}>{children}</button>
+      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+        {children}
+      </button>
     </li>
   );
 };
