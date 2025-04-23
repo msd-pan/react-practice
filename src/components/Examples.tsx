@@ -30,7 +30,7 @@ export const Examples = () => {
   return (
     <Section title="Examples" id="examples">
       <Tabs>
-        <Tabs.Buttons>
+        <Tabs.Buttons ButtonsContainer="menu">
           <TabButton
             isSelected={selectedTopic === "components"}
             onClick={() => handleSelect("components")}
