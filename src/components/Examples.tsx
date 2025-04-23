@@ -4,6 +4,7 @@ import { EXAMPLES } from "@/data";
 
 import { TabButton } from "@/components/TabButton";
 import { Section } from "@/components/Section";
+import { Tabs } from "@/components/Tabs";
 
 export const Examples = () => {
   type SelectedButton = keyof typeof EXAMPLES;
@@ -28,33 +29,35 @@ export const Examples = () => {
 
   return (
     <Section title="Examples" id="examples">
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === "components"}
-          onClick={() => handleSelect("components")}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "jsx"}
-          onClick={() => handleSelect("jsx")}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "props"}
-          onClick={() => handleSelect("props")}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === "state"}
-          onClick={() => handleSelect("state")}
-        >
-          State
-        </TabButton>
-      </menu>
-      {tabContent}
+      <Tabs>
+        <Tabs.Buttons>
+          <TabButton
+            isSelected={selectedTopic === "components"}
+            onClick={() => handleSelect("components")}
+          >
+            Components
+          </TabButton>
+          <TabButton
+            isSelected={selectedTopic === "jsx"}
+            onClick={() => handleSelect("jsx")}
+          >
+            JSX
+          </TabButton>
+          <TabButton
+            isSelected={selectedTopic === "props"}
+            onClick={() => handleSelect("props")}
+          >
+            Props
+          </TabButton>
+          <TabButton
+            isSelected={selectedTopic === "state"}
+            onClick={() => handleSelect("state")}
+          >
+            State
+          </TabButton>
+        </Tabs.Buttons>
+        <Tabs.Content>{tabContent}</Tabs.Content>
+      </Tabs>
     </Section>
   );
 };
