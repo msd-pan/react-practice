@@ -1,17 +1,20 @@
-type TabButtonProps = {
-  children: React.ReactNode;
-  onSelect: () => void;
-  isSelected: boolean;
-};
+import { HTMLAttributes, ReactNode } from "react";
 
-const TabButton = ({ children, onSelect, isSelected }: TabButtonProps) => {
+type TabButtonProps = {
+  children: ReactNode;
+  isSelected: boolean;
+} & HTMLAttributes<HTMLElement>;
+
+export const TabButton = ({
+  children,
+  isSelected,
+  ...props
+}: TabButtonProps) => {
   return (
     <li>
-      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+      <button className={isSelected ? "active" : undefined} {...props}>
         {children}
       </button>
     </li>
   );
 };
-
-export default TabButton;

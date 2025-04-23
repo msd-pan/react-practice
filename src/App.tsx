@@ -1,9 +1,9 @@
 import "./App.css";
-import Header from "@/components/header/Header";
-import CoreConcepts from "./components/CoreConcepts";
-import Examples from "./components/Examples";
+import { Header } from "@/components/header/Header";
+import { CoreConcepts } from "@/components/CoreConcepts";
+import { Examples } from "@/components/Examples";
 
-const App = () => {
+export const App = () => {
   return (
     <div>
       <Header />
@@ -14,5 +14,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

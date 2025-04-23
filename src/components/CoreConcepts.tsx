@@ -1,7 +1,8 @@
 import { CORE_CONCEPTS } from "@/data";
-import CoreConcept from "./CoreConcept";
 
-const CoreConcepts = () => {
+import { CoreConcept } from "@/components/CoreConcept";
+
+export const CoreConcepts = () => {
   return (
     <section id="core-concepts">
       <h2>Core Concepts</h2>
@@ -13,5 +14,3 @@ const CoreConcepts = () => {
     </section>
   );
 };
-
-export default CoreConcepts;
