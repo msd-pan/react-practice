@@ -13,9 +13,8 @@ type TabsButtonsProps = {
   ButtonsContainer?: keyof JSX.IntrinsicElements;
 };
 
-Tabs.Buttons = ({ children, ButtonsContainer }: TabsButtonsProps) => {
-  const Container = ButtonsContainer ?? "menu";
-  return <Container>{children}</Container>;
+Tabs.Buttons = ({ children, ButtonsContainer = "menu" }: TabsButtonsProps) => {
+  return <ButtonsContainer>{children}</ButtonsContainer>;
 };
 
 Tabs.Content = ({ children }: { children: ReactNode }) => {
