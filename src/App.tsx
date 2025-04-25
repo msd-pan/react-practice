@@ -1,8 +1,10 @@
 import { GameBoard } from "@/components/GameBoard";
+import { Log } from "@/components/Log";
 import { Player } from "@/components/Player";
 import { useState } from "react";
 
 export const App = () => {
+  const [gameTurns, setGameTurns] = useState([]);
   const [activePlayer, setActivePlayer] = useState<"X" | "O">("X");
 
   const handleSelectSquare = () => {
@@ -20,7 +22,7 @@ export const App = () => {
           activePlayerSymbol={activePlayer}
         />
       </div>
-      LOG
+      <Log />
     </main>
   );
 };
