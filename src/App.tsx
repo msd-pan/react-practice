@@ -32,10 +32,7 @@ export const App = () => {
           <Player name="player 1" symbol="X" isActive={activePlayer === "X"} />
           <Player name="player 2" symbol="O" isActive={activePlayer === "O"} />
         </ol>
-        <GameBoard
-          onSelectSquare={handleSelectSquare}
-          activePlayerSymbol={activePlayer}
-        />
+        <GameBoard onSelectSquare={handleSelectSquare} turns={gameTurns} />
       </div>
       <Log />
     </main>
