@@ -7,27 +7,23 @@ const initialGameBoard: (string | null)[][] = [
 ];
 
 type GameBoardProps = {
-  onSelectSquare: () => void;
-  activePlayerSymbol: "X" | "O";
+  onSelectSquare: string;
 };
 
-export const GameBoard = ({
-  onSelectSquare,
-  activePlayerSymbol,
-}: GameBoardProps) => {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export const GameBoard = ({ onSelectSquare }: GameBoardProps) => {
+  // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-  const handleSelectSquare = (rowIndex: number, colIndex: number) => {
-    setGameBoard((preGameBoard) => {
-      const updatedBoard = [
-        ...preGameBoard.map((innerArray) => [...innerArray]),
-      ];
-      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedBoard;
-    });
+  // const handleSelectSquare = (rowIndex: number, colIndex: number) => {
+  //   setGameBoard((preGameBoard) => {
+  //     const updatedBoard = [
+  //       ...preGameBoard.map((innerArray) => [...innerArray]),
+  //     ];
+  //     updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
+  //     return updatedBoard;
+  //   });
 
-    onSelectSquare();
-  };
+  //   onSelectSquare();
+  // };
   return (
     <ol id="game-board">
       {gameBoard.map((row, rowIndex) => (
@@ -35,13 +31,7 @@ export const GameBoard = ({
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button
-                  onClick={() => {
-                    handleSelectSquare(rowIndex, colIndex);
-                  }}
-                >
-                  {playerSymbol}
-                </button>
+                <button onClick={onSelectSquare}>{playerSymbol}</button>
               </li>
             ))}
           </ol>
