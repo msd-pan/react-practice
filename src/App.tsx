@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 import { GameBoard } from "@/components/GameBoard";
 import { Log } from "@/components/Log";
 import { Player } from "@/components/Player";
-import { useState } from "react";
+
+import { WINNING_COMBINATIONS } from "@/winning-combinations";
 
 type GameTurns = { square: { row: number; col: number }; player: "X" | "O" }[];
 
