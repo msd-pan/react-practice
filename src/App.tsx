@@ -3,19 +3,27 @@ import { Log } from "@/components/Log";
 import { Player } from "@/components/Player";
 import { useState } from "react";
 
+type GameTurns = { square: { row: number; col: number }; player: "X" | "O" }[];
+
+const deriveActivePlaer = (gameTurns: GameTurns) => {
+  let currentPlayer: "X" | "O" = "X";
+
+  if (gameTurns.length > 0 && gameTurns[0].player === "X") currentPlayer = "O";
+  return currentPlayer;
+};
+
 export const App = () => {
   const [gameTurns, setGameTurns] = useState<
     { square: { row: number; col: number }; player: "X" | "O" }[]
   >([]);
-  const [activePlayer, setActivePlayer] = useState<"X" | "O">("X");
+  // const [activePlayer, setActivePlayer] = useState<"X" | "O">("X");
+
+  const activePlayer = deriveActivePlaer(gameTurns);
 
   const handleSelectSquare = (rowIndex: number, colIndex: number) => {
-    setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
+    // setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
     setGameTurns((prevTurns) => {
-      let currentPlayer: "X" | "O" = "X";
-
-      if (prevTurns.length > 0 && prevTurns[0].player === "X")
-        currentPlayer = "O";
+      const currentPlayer = deriveActivePlaer(prevTurns);
 
       const updatedTurns = [
         { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
