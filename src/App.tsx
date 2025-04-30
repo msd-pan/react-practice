@@ -21,6 +21,7 @@ export const App = () => {
         { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurns,
       ];
+      console.log(updatedTurns);
 
       return updatedTurns;
     });
@@ -34,7 +35,7 @@ export const App = () => {
         </ol>
         <GameBoard onSelectSquare={handleSelectSquare} turns={gameTurns} />
       </div>
-      <Log />
+      <Log turns={gameTurns} />
     </main>
   );
 };
