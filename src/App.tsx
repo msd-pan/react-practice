@@ -6,6 +6,12 @@ import { Player } from "@/components/Player";
 
 import { WINNING_COMBINATIONS } from "@/winning-combinations";
 
+const initialGameBoard: (string | null)[][] = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
+
 type GameTurns = { square: { row: number; col: number }; player: "X" | "O" }[];
 
 const deriveActivePlaer = (gameTurns: GameTurns) => {
@@ -22,6 +28,15 @@ export const App = () => {
   // const [activePlayer, setActivePlayer] = useState<"X" | "O">("X");
 
   const activePlayer = deriveActivePlaer(gameTurns);
+
+  const gameBoard = initialGameBoard;
+
+  for (const turn of gameTurns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
+  }
 
   const handleSelectSquare = (rowIndex: number, colIndex: number) => {
     // setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
@@ -44,7 +59,7 @@ export const App = () => {
           <Player name="player 1" symbol="X" isActive={activePlayer === "X"} />
           <Player name="player 2" symbol="O" isActive={activePlayer === "O"} />
         </ol>
-        <GameBoard onSelectSquare={handleSelectSquare} turns={gameTurns} />
+        <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
       </div>
       <Log turns={gameTurns} />
     </main>

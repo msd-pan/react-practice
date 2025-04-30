@@ -1,39 +1,12 @@
-const initialGameBoard: (string | null)[][] = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
 type GameBoardProps = {
   onSelectSquare: (rowIndex: number, colIndex: number) => void;
-  turns: { square: { row: number; col: number }; player: "X" | "O" }[];
+  board: (string | null)[][];
 };
 
-export const GameBoard = ({ onSelectSquare, turns }: GameBoardProps) => {
-  const gameBoard = initialGameBoard;
-
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-
-    gameBoard[row][col] = player;
-  }
-  // const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-  // const handleSelectSquare = (rowIndex: number, colIndex: number) => {
-  //   setGameBoard((preGameBoard) => {
-  //     const updatedBoard = [
-  //       ...preGameBoard.map((innerArray) => [...innerArray]),
-  //     ];
-  //     updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-  //     return updatedBoard;
-  //   });
-
-  //   onSelectSquare();
-  // };
+export const GameBoard = ({ onSelectSquare, board }: GameBoardProps) => {
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
