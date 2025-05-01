@@ -23,6 +23,10 @@ const deriveActivePlaer = (gameTurns: GameTurns) => {
 };
 
 export const App = () => {
+  const [players, setPlayers] = useState({
+    X: "Player 1",
+    O: "Player 2",
+  });
   const [gameTurns, setGameTurns] = useState<
     { square: { row: number; col: number }; player: "X" | "O" }[]
   >([]);
@@ -77,6 +81,16 @@ export const App = () => {
   const handleRestart = () => {
     setGameTurns([]);
   };
+
+  const handlePlayerNameChange = (symbol: "X" | "O", newName: string) => {
+    setPlayers((prePlayers) => {
+      return {
+        ...prePlayers,
+        [symbol]: newName,
+      };
+    });
+  };
+
   return (
     <main>
       <div id="game-container">
