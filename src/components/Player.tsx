@@ -2,16 +2,23 @@ import { useState } from "react";
 
 type PlayerProps = {
   name: string;
-  symbol: string;
+  symbol: "X" | "O";
   isActive: boolean;
+  onNameChange: (symbol: "X" | "O", newUserName: string) => void;
 };
 
-export const Player = ({ name, symbol, isActive }: PlayerProps) => {
+export const Player = ({
+  name,
+  symbol,
+  isActive,
+  onNameChange,
+}: PlayerProps) => {
   const [originName, setOriginName] = useState(name);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditClick = () => {
     setIsEditing((editing) => !editing); // schedules a state update to true
+    if (isEditing) onNameChange(symbol, originName);
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {

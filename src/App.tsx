@@ -43,7 +43,7 @@ export const App = () => {
     gameBoard[row][col] = player;
   }
 
-  let winner: "X" | "O" | null = null;
+  let winner = "";
 
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquareSymbol =
@@ -58,7 +58,7 @@ export const App = () => {
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     )
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
   }
 
   const hadDraw = gameTurns.length == 9;
@@ -95,8 +95,18 @@ export const App = () => {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player name="player 1" symbol="X" isActive={activePlayer === "X"} />
-          <Player name="player 2" symbol="O" isActive={activePlayer === "O"} />
+          <Player
+            name="player 1"
+            symbol="X"
+            isActive={activePlayer === "X"}
+            onNameChange={handlePlayerNameChange}
+          />
+          <Player
+            name="player 2"
+            symbol="O"
+            isActive={activePlayer === "O"}
+            onNameChange={handlePlayerNameChange}
+          />
         </ol>
         {(winner || hadDraw) && (
           <GameOver winner={winner} onRestart={handleRestart} />
