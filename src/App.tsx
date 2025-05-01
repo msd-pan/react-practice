@@ -1,11 +1,13 @@
-import logo from "@/assets/logo.png";
+import { Header } from "@/components/Header";
+import { AuthInputs } from "@/components/AuthInputs";
 
 export const App = () => {
   return (
-    <header>
-      <img src={logo} alt="A canvas" />
-      <h1>ReactArt</h1>
-      <p>A community of artists and art-lovers.</p>
-    </header>
+    <>
+      <Header />
+      <main>
+        <AuthInputs />
+      </main>
+    </>
   );
 };

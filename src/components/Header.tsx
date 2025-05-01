@@ -1,6 +1,7 @@
-import logo from '../assets/logo.png';
+import logo from "@/assets/logo.png";
+import "./header.css";
 
-export default function Header() {
+export const Header = () => {
   return (
     <header>
       <img src={logo} alt="A canvas" />
@@ -8,4 +9,4 @@ export default function Header() {
       <p>A community of artists and art-lovers.</p>
     </header>
   );
-}
+};
