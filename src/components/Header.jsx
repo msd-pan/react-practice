@@ -1,6 +1,6 @@
-import logo from "@/assets/logo.png";
+import logo from '../assets/logo.png';
 
-export const App = () => {
+export default function Header() {
   return (
     <header>
       <img src={logo} alt="A canvas" />
@@ -8,4 +8,4 @@ export const App = () => {
       <p>A community of artists and art-lovers.</p>
     </header>
   );
-};
+}
